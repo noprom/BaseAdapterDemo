@@ -1,6 +1,7 @@
 package com.huntdreams.baseadapterdemo;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ public class MyAdapter extends BaseAdapter {
 
     private List<ItemBean> mItemBeans;
     private LayoutInflater mInflater;
+    private long mSumTime;
 
     public MyAdapter(Context context,List<ItemBean> list){
         this.mItemBeans = list;
@@ -67,6 +69,7 @@ public class MyAdapter extends BaseAdapter {
 //        return convertView;
 
         // 文艺式
+        long startTime = System.nanoTime();
         ViewHolder viewHolder;
         if(convertView == null){
             convertView = mInflater.inflate(R.layout.list_item,null);
@@ -82,6 +85,10 @@ public class MyAdapter extends BaseAdapter {
         viewHolder.image.setImageResource(itemBean.itemImageResId);
         viewHolder.title.setText(itemBean.itemTitle);
         viewHolder.content.setText(itemBean.itemContent);
+
+        long endTime = System.nanoTime();
+        mSumTime += endTime-startTime;
+        Log.d("TAG","BaseAdapterDemo Time = "+String.valueOf(mSumTime));
         return convertView;
     }
 

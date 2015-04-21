@@ -52,18 +52,42 @@ public class MyAdapter extends BaseAdapter {
 //        content.setText(itemBean.itemContent);
 //        return view;
 
-        // 普通式
+//        // 普通式
+//        if(convertView == null){
+//            convertView = mInflater.inflate(R.layout.list_item,null);
+//        }
+//        ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_image);
+//        TextView title = (TextView) convertView.findViewById(R.id.tv_title);
+//        TextView content = (TextView) convertView.findViewById(R.id.tv_content);
+//
+//        ItemBean itemBean = mItemBeans.get(position);
+//        imageView.setImageResource(itemBean.itemImageResId);
+//        title.setText(itemBean.itemTitle);
+//        content.setText(itemBean.itemContent);
+//        return convertView;
+
+        // 文艺式
+        ViewHolder viewHolder;
         if(convertView == null){
             convertView = mInflater.inflate(R.layout.list_item,null);
+            viewHolder = new ViewHolder();
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.iv_image);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.tv_title);
+            viewHolder.content = (TextView) convertView.findViewById(R.id.tv_content);
+            convertView.setTag(viewHolder);
+        }else{
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_image);
-        TextView title = (TextView) convertView.findViewById(R.id.tv_title);
-        TextView content = (TextView) convertView.findViewById(R.id.tv_content);
-
         ItemBean itemBean = mItemBeans.get(position);
-        imageView.setImageResource(itemBean.itemImageResId);
-        title.setText(itemBean.itemTitle);
-        content.setText(itemBean.itemContent);
+        viewHolder.image.setImageResource(itemBean.itemImageResId);
+        viewHolder.title.setText(itemBean.itemTitle);
+        viewHolder.content.setText(itemBean.itemContent);
         return convertView;
+    }
+
+    class ViewHolder{
+        public ImageView image;
+        public TextView title;
+        public TextView content;
     }
 }

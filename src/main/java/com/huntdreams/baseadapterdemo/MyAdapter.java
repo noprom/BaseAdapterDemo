@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.huntdreams.www.myapplication.R;
-
 import java.util.List;
 
 /**

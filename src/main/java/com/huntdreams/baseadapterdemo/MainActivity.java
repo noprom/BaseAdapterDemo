@@ -4,8 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.huntdreams.www.myapplication.R;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,9 @@ public class MainActivity extends ActionBarActivity {
                     "我是标题"+i,
                     "我是内容"+i));
         }
-
+        // 写入适配器
+        ListView listView = (ListView) findViewById(R.id.listview);
+        listView.setAdapter(new MyAdapter(this,itemBeansList));
     }
 
 

@@ -1,9 +1,14 @@
-package com.huntdreams.www.myapplication;
+package com.huntdreams.baseadapterdemo;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.huntdreams.www.myapplication.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +17,16 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // 准备数据源
+        List<ItemBean> itemBeansList = new ArrayList<ItemBean>();
+        for (int i=0;i<20;++i){
+            itemBeansList.add(new ItemBean(
+                    R.drawable.ic_launcher,
+                    "我是标题"+i,
+                    "我是内容"+i));
+        }
+
     }
 
 

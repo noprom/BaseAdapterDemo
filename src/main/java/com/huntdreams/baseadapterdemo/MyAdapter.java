@@ -40,15 +40,30 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        View view = mInflater.inflate(R.layout.list_item,null);
-        ImageView imageView = (ImageView) view.findViewById(R.id.iv_image);
-        TextView title = (TextView) view.findViewById(R.id.tv_title);
-        TextView content = (TextView) view.findViewById(R.id.tv_content);
+//        // 逗比式
+//        View view = mInflater.inflate(R.layout.list_item,null);
+//        ImageView imageView = (ImageView) view.findViewById(R.id.iv_image);
+//        TextView title = (TextView) view.findViewById(R.id.tv_title);
+//        TextView content = (TextView) view.findViewById(R.id.tv_content);
+//
+//        ItemBean itemBean = mItemBeans.get(position);
+//        imageView.setImageResource(itemBean.itemImageResId);
+//        title.setText(itemBean.itemTitle);
+//        content.setText(itemBean.itemContent);
+//        return view;
+
+        // 普通式
+        if(convertView == null){
+            convertView = mInflater.inflate(R.layout.list_item,null);
+        }
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_image);
+        TextView title = (TextView) convertView.findViewById(R.id.tv_title);
+        TextView content = (TextView) convertView.findViewById(R.id.tv_content);
 
         ItemBean itemBean = mItemBeans.get(position);
         imageView.setImageResource(itemBean.itemImageResId);
         title.setText(itemBean.itemTitle);
         content.setText(itemBean.itemContent);
-        return view;
+        return convertView;
     }
 }
